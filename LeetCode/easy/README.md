@@ -30,3 +30,31 @@ class Solution{
     }
 };
 ```
+
+/*1672. Richest Customer Wealth
+You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
+
+A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
+
+Constraints:
+m == accounts.length
+n == accounts[i].length
+1 <= m, n <= 50
+1 <= accounts[i][j] <= 100*/
+
+```cpp
+class Solution{
+public:
+    int MaximunWealth(vector<vector<int>> & accounts){
+        int maxwealth = 0;
+        for(const auto & customer: accounts){
+            int currentsum = 0;
+            for(int val: customer){
+                currentsum += val;
+            }
+            maxwealth = max(maxwealth,currentsum);
+        }
+        return maxwealth;
+    }    
+};
+```
