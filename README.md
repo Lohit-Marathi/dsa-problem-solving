@@ -1,46 +1,30 @@
 # 🧠 DSA & Competitive Programming
 
-My personal repository for solving **Data Structures & Algorithms** and **Competitive Programming** problems.
+My personal repository for documenting my journey through **Data Structures & Algorithms** and **Competitive Programming**.
 
-🎯 **Goal:** Solve consistently, improve problem-solving skills, and keep the streak alive. 🔥
+🎯 **Goal:** Solve consistently, improve problem-solving ability, understand patterns deeply, and build strong algorithmic thinking.
+
+> **Think. Solve. Analyze. Learn. Repeat. 🔁**
 
 ---
 
-## 📂 Structure
+## 📂 Repository Structure
 
 ```text
 DSA/
 │
-├── leetcode/
-│   ├── easy/
-│   ├── medium/
-│   └── hard/
+├── README.md
 │
-├── codeforces/
-```
-
----
-
-## 📝 My Approach
-
-Each problem lives in **one single code file**.
-
-At the top:
-
-```text
-Problem → Approach → Intuition → Key Learnings
-```
-
-Below that:
-
-```text
-Working Solution
-```
-
-Everything about a problem stays together — **notes, thinking, and code.**
-
----
-
-> **Think. Solve. Learn. Repeat. 🔁**
->
-> One problem at a time. One day at a time. 🟩
+├── leetcode/
+│   │
+│   ├── easy/
+│   │   └── README.md
+│   │
+│   ├── medium/
+│   │   └── README.md
+│   │
+│   └── hard/
+│       └── README.md
+│
+└── codeforces/
+    └── README.md
