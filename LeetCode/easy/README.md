@@ -30,7 +30,7 @@ class Solution{
     }
 };
 ```
-
+/-------------------------------------------------------------------------------------------------------------------------/
 /*1672. Richest Customer Wealth
 You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
 
@@ -57,4 +57,39 @@ public:
         return maxwealth;
     }    
 };
+```
+
+/----------------------------------------------------------------------------------------------------------------------------/
+/*412. Fizz Buzz
+Given an integer n, return a string array answer (1-indexed) where:
+
+answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
+answer[i] == "Fizz" if i is divisible by 3.
+answer[i] == "Buzz" if i is divisible by 5.
+answer[i] == i (as a string) if none of the above conditions are true.
+
+Constraints:
+1 <= n <= 104*/
+
+```cpp
+class Solution{
+    public:
+    vector<string> fizzBuzz(int n){
+        vector<string> answer;
+        // Pre allocate memory to prevent runtime resizing overhead
+        answer.reserve(n);
+        for(int i = 1; i<= n;i++){
+            string current = "";
+
+            if(i % 3 == 0) current += "Fizz";
+            if(i % 5 == 0) current += "Buzz";
+
+            if(current.empty()){
+                current = to_string(i);
+            }
+            answer.push_back(current);
+        }
+        return answer;
+    }
+}
 ```
