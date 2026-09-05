@@ -173,3 +173,27 @@ class Solutions{
 }
 
 ```
+/---------------------------------------------------------------------------------------------------------------------------/
+485. Max Consecutive Ones
+
+Given a binary array nums, return the maximum number of consecutive 1's in the array.
+ 
+Constraints:
+1 <= nums.length <= 105
+nums[i] is either 0 or 1.
+
+```cpp
+class Solution{
+    public:
+    int findMaxConsecutiveOnes(vector<int> &nums){
+        int max_streak = 0;
+        int count_streak = 0;
+
+        for(int val:nums){
+            count_streak = (val == 1) ? count_streak + 1: 0;
+            max_streak = max(max_streak, count_streak);
+        }
+        return max_streak;
+    }
+}
+```
