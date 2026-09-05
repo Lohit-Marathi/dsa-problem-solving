@@ -138,11 +138,38 @@ class Solution{
     vector<int> getConcatenation(vector<int> &num){
         int n = nums.size();
         vector<int> ans(2*n);
-        
+
         for(int i=0; i< n; i++){
             ans[i] = num[i];
             ans[i+n] = num[i];
         }return ans;
     }
 };
+```
+
+/---------------------------------------------------------------------------------------------------------------------------/
+1470. Shuffle the Array
+
+Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+
+Constraints:
+1 <= n <= 500
+nums.length == 2n
+1 <= nums[i] <= 10^3
+
+```cpp
+class Solutions{
+    public:
+    vector<int> shuffle(vector<int> &nums, int n){
+        vector<int> ans(2 * n);
+
+        for(int i = 0; i < n; i++){
+            ans[2 * i] = nums[i];
+            ans[2 * i + 1] = nums[i + n];
+        }
+        return ans;
+    }
+}
+
 ```
