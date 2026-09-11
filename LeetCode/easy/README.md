@@ -364,6 +364,53 @@ public:
 };
 ```
 /---------------------------------------------------------------------------------------------------------------------------/
+2965. Find Missing and Repeated Values
+
+You are given a 0-indexed 2D integer matrix grid of size n * n with values in the range [1, n2]. Each integer appears exactly once except a which appears twice and b which is missing. The task is to find the repeating and missing numbers a and b.
+Return a 0-indexed integer array ans of size 2 where ans[0] equals to a and ans[1] equals to b.
+
+Constraints:
+2 <= n == grid.length == grid[i].length <= 50
+1 <= grid[i][j] <= n * n
+For all x that 1 <= x <= n * n there is exactly one x that is not equal to any of the grid members.
+For all x that 1 <= x <= n * n there is exactly one x that is equal to exactly two of the grid members.
+For all x that 1 <= x <= n * n except two of them there is exactly one pair of i, j that 0 <= i, j <= n - 1 and grid[i][j] == x.
+
+```cpp
+class Solution {
+public:
+    vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
+        
+        long long n = grid.size();
+        long long k = n * n;
+
+        long long expected_sum = k*(k+1)/2;
+        long long expectedsquare_sum = k*(k+1) * (2*k + 1) / 6;
+
+        long long actual_sum = 0;
+        long long actualsquare_sum = 0;
+
+        for(int i = 0; i < n; ++i){
+            for(int j = 0; j < n; ++j){
+                long long val = grid[i][j];
+                actual_sum += val;
+                actualsquare_sum += val * val;        
+            }
+        }
+
+        long long diff1 = actual_sum - expected_sum;
+
+        long long diff2 = actualsquare_sum - expectedsquare_sum;
+
+        long long sum = diff2/diff1;
+
+        int duplicate = (diff1 + sum)/2;
+        int missing = sum - duplicate;
+
+        return {duplicate,missing}; 
+    }
+};
+```
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
