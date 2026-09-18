@@ -592,6 +592,70 @@ public:
 };
 ```
 /---------------------------------------------------------------------------------------------------------------------------/
+14. Longest Common Prefix
+
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+Constraints:
+1 <= strs.length <= 200
+0 <= strs[i].length <= 200
+strs[i] consists of only lowercase English letters if it is non-empty.
+
+```cpp
+//method 1
+class Solution {
+public:
+    std::string longestCommonPrefix(std::vector<std::string>& strs) {
+        // 1. Edge Case: If the array is empty, return ""
+        if (strs.empty()) return "";
+        
+        // 2. Take the first string as our reference baseline
+        std::string base = strs[0];
+        
+        // 3. Scan vertically, character by character
+        for (int i = 0; i < base.length(); i++) {
+            char c = base[i];
+            
+            // Check this character against all other strings
+            for (int j = 1; j < strs.size(); j++) {
+                // If the current index is out of bounds for the other string,
+                // or if the characters don't match, we stop immediately.
+                if (i >= strs[j].length() || strs[j][i] != c) {
+                    return base.substr(0, i); // Return everything up to this point
+                }
+            }
+        }
+        
+        return base;
+    }
+};
+
+//method 2
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        //Handle empty input
+        if(strs.empty()) return "";
+
+        // sort the string alphabetically
+        sort(strs.begin(),strs.end());
+        
+        //compare first and last strings
+        string first = strs.front();
+        string last = strs.back();
+        string result = "";
+
+        //Find the common characters between first and last string
+        for(int i = 0; i< min(first.length(),last.length());i++){
+            if(first[i] != last[i]){
+                break;
+            }
+            result += first[i];
+        }return result;
+    }
+};
+```
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
