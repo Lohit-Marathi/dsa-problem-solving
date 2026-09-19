@@ -619,6 +619,81 @@ public:
 };
 ```
 /---------------------------------------------------------------------------------------------------------------------------/
+242. Valid Anagram
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+Constraints:
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
+
+```cpp
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.length() != t.length()){
+            return false;
+        }
+        int arr[26] = {0};
+        for(char c : s){
+            arr[c -'a']++;
+        }
+        for(char c : t){
+            if(--arr[c-'a'] < 0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+// class Solution {
+// public:
+//     bool isAnagram(const string& s, const string& t) {
+//         // Force the compiler to decouple standard I/O synchronization
+//         ios_base::sync_with_stdio(false);
+//         cin.tie(NULL);
+
+//         int len = s.length();
+//         if (len != t.length()) return false;
+
+//         // Use size_t or unsigned long long for faster CPU register matching
+//         size_t counts[26] = {0};
+
+//         // Pointer-arithmetic read (Faster than array indexing s[i])
+//         const char* pS = s.data();
+//         const char* pT = t.data();
+
+//         // Loop Unrolling: Process 4 characters at a time to maximize instruction-level parallelism
+//         int i = 0;
+//         for (; i <= len - 4; i += 4) {
+//             counts[pS[i] - 'a']++;     counts[pT[i] - 'a']--;
+//             counts[pS[i+1] - 'a']++;   counts[pT[i+1] - 'a']--;
+//             counts[pS[i+2] - 'a']++;   counts[pT[i+2] - 'a']--;
+//             counts[pS[i+3] - 'a']++;   counts[pT[i+3] - 'a']--;
+//         }
+
+//         // Clean up remaining characters
+//         for (; i < len; ++i) {
+//             counts[pS[i] - 'a']++;
+//             counts[pT[i] - 'a']--;
+//         }
+
+//         // Vectorized SIMD-friendly reduction
+//         for (int j = 0; j < 26; ++j) {
+//             if (counts[j] != 0) return false;
+//         }
+
+//         return true;
+//     }
+// };
+```
+/---------------------------------------------------------------------------------------------------------------------------/
+/---------------------------------------------------------------------------------------------------------------------------/
+/---------------------------------------------------------------------------------------------------------------------------/
+/---------------------------------------------------------------------------------------------------------------------------/
+/---------------------------------------------------------------------------------------------------------------------------/
+/---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
