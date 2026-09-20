@@ -689,6 +689,56 @@ public:
 // };
 ```
 /---------------------------------------------------------------------------------------------------------------------------/
+9. Palindrome Number
+Given an integer x, return true if x is a palindrome, and false otherwise.
+
+Constraints:
+-231 <= x <= 231 - 1
+
+```cpp
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+
+        long reverse = 0;
+        int xcopy = x;
+
+        while (x > 0) {
+            if(reverse > INT_MAX/10){
+                return false;
+            }
+            reverse = (reverse * 10) + (x % 10);
+            x /= 10;
+        }
+
+        return reverse == xcopy;        
+    }
+};
+// class Solution {
+// public:
+//     bool isPalindrome(int x) {
+//         ios_base::sync_with_stdio(false);
+//         cin.tie(NULL);
+
+//         if(x < 0 || (x % 10 == 0 && x != 0)){
+//             return false;
+//         }
+//         int revhalf = 0;   
+//         while(x>revhalf){
+//             if(revhalf > INT_MAX / 10){
+//                 return false;
+//             }
+//             revhalf = (revhalf * 10) + (x % 10);
+//             x /= 10;
+//         }
+//         return x == revhalf || x == revhalf / 10;
+        
+//     }
+// };
+```
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
