@@ -812,6 +812,50 @@ public:
 
 ```
 /---------------------------------------------------------------------------------------------------------------------------/
+20. Valid Parentheses
+
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+Constraints:
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+```cpp
+class Solution {
+public:
+    bool isValid(string s) {
+        // odd length strings can never be valid
+        if(s.length() % 2 != 0) return false;
+
+        stack<char> st;
+
+        for(char val:s){
+        //if it's opening bracket, push it's corresponding closing bracket
+            if(val == '('){
+                st.push(')');
+            }else if(val == '{'){
+                st.push('}');
+            }else if(val== '['){
+                st.push(']');
+            }
+            //if it's a closing bracket, ckeck if it matches the expected top element
+            else{
+                if(st.empty() || st.top() != val){
+                    return false;
+                }
+                st.pop();  //matched successfully 
+            }
+        
+        }
+        // if the stack is empty, all the brackets were correctly matched
+        return st.empty();
+    }
+};
+```
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
 /---------------------------------------------------------------------------------------------------------------------------/
